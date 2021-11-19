@@ -10,5 +10,6 @@ redshift &
 lxpolkit &
 setxkbmap -layout br
 slstatus &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 exec dwm
