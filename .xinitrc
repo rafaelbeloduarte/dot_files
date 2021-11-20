@@ -6,7 +6,6 @@ xset s off -dpms &
 setxkbmap -layout br
 nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/ &
 picom &
-light-locker &
 /usr/lib/geoclue-2.0/demos/agent &
 redshift &
 lxpolkit &
