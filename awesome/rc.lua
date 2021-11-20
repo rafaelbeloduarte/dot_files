@@ -354,7 +354,7 @@ globalkeys = gears.table.join(
     awful.spawn("qutebrowser") end,
               {description = "run qutebrowser", group = "launcher"}),
     awful.key({ altkey },            "l",     function ()
-    awful.spawn("sleep 1 && xset s activate && slock") end,
+    awful.spawn.with_shell("sleep 1 && xset s activate && slock") end,
               {description = "lock the screen", group = "energy"}),
     awful.key({ altkey },            "s",     function ()
     awful.spawn("steam") end,
