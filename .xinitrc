@@ -10,6 +10,7 @@ picom &
 redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
-slstatus &
+# slstatus &
+volumeicon &
 
-exec dwm
+exec awesome
