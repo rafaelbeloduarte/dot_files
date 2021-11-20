@@ -2,14 +2,15 @@
 # xrandr --addmode Virtual1 1920x1000_60.00
 # xrandr -s 1920x1080
 numlockx &
+xset s off -dpms &
+setxkbmap -layout br
 nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/ &
 picom &
 light-locker &
 /usr/lib/geoclue-2.0/demos/agent &
 redshift &
 lxpolkit &
-setxkbmap -layout br
-slstatus &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
+slstatus &
 
 exec dwm
