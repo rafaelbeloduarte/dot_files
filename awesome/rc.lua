@@ -626,8 +626,6 @@ awful.rules.rules = {
       properties = { screen = 1, tag = " 3 ", switchtotag = true } },
     { rule = { class = "Audacious" },
       properties = { screen = 1, tag = " 4 ", switchtotag = true } },
-    { rule = { name = "Todoist" },
-      properties = { screen = 1, tag = " 5 ", switchtotag = true } },
     { rule = { class = "Steam" },
       properties = { screen = 1, tag = " 7 ", switchtotag = true } },
     { rule = { class = "calibre" },
