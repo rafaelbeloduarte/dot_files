@@ -700,19 +700,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Auto Start Apps
--- awful.spawn.with_shell("lxpolkit")
--- awful.spawn.with_shell("numlockx")
---awful.spawn.with_shell("/usr/lib/geoclue-2.0/demos/agent")
---awful.spawn.with_shell("redshift")
---awful.spawn.with_shell("picom")
---awful.spawn.with_shell("setxkbmap br")
---awful.spawn.with_shell("light-locker")
---awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/")
---awful.spawn.with_shell("/home/rafael/Applications/Todoist-1.0.2_8e180269f604a25cb7708fae37813d40.AppImage")
---awful.spawn.with_shell("xset s off -dpms")
-awful.spawn.with_shell("volumeicon")
--- awful.spawn.with_shell("nm-applet")
--- awful.spawn.with_shell("xfce4-power-manager")
+-- awful.spawn.with_shell("app command")
 
 -- Run garbage collector regularly to prevent memory leaks
 gears.timer {
