@@ -102,7 +102,6 @@ mymainmenu = awful.menu({ items = {
                                     { "Mendeley Desktop", "mendeleydesktop", "/usr/share/icons/Papirus-Dark/64x64/apps/mendeley-desktop.svg"},
                                     { "SciLab", "scilab", "/usr/share/icons/Papirus-Dark/64x64/apps/scilab.svg"},
                                     { "Xcos", "xcos", "/usr/share/icons/Papirus-Dark/64x64/apps/xcos.svg"},
-                                    { "Planner", "flatpak run com.github.alainm23.planner", "/usr/share/icons/Papirus-Dark/64x64/apps/planner.svg"},
                                     { "KeePass", "keepassxc", "/usr/share/icons/Papirus-Dark/64x64/apps/keepassxc.svg"},
                                     { "Steam", "steam", "/usr/share/icons/Papirus-Dark/64x64/apps/steam.svg"},
                                     { "Audacious", "audacious", "/usr/share/icons/Papirus-Dark/64x64/apps/audacious.svg"},
