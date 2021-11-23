@@ -95,9 +95,7 @@ local function worker(user_args)
     local theme = args.theme or 'naughty'
     local placement = args.placement or 'top'
     local radius = args.radius or 8
-    local next_month_button = args.next_month_button or 4
-    local previous_month_button = args.previous_month_button or 5
-    local start_sunday = args.start_sunday or false
+
 
     local styles = {}
     local function rounded_shape(size)
@@ -185,7 +183,6 @@ local function worker(user_args)
         font = beautiful.get_font(),
         fn_embed = decorate_cell,
         long_weekdays = true,
-        start_sunday = start_sunday,
         widget = wibox.widget.calendar.month
     }
 
@@ -201,14 +198,14 @@ local function worker(user_args)
 
     popup:buttons(
             awful.util.table.join(
-                    awful.button({}, next_month_button, function()
+                    awful.button({}, 4, function()
                         local a = cal:get_date()
                         a.month = a.month + 1
                         cal:set_date(nil)
                         cal:set_date(a)
                         popup:set_widget(cal)
                     end),
-                    awful.button({}, previous_month_button, function()
+                    awful.button({}, 5, function()
                         local a = cal:get_date()
                         a.month = a.month - 1
                         cal:set_date(nil)

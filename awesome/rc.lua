@@ -16,7 +16,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 package.loaded["naughty.dbus"] = {}
 
 -- Enable hotkeys help widget for VIM and other apps
@@ -83,7 +83,7 @@ myawesomemenu = {
 
 menu_energia = { 
                 { "reiniciar", "reboot", "/usr/share/icons/Papirus-Dark/64x64/apps/system-reboot.svg" },
-                { "desligar", "poweroff", "/usr/share/icons/Papirus-Dark/64x64/apps/system-shutdown.svg" }
+                { "desligar", "shutdown 0", "/usr/share/icons/Papirus-Dark/64x64/apps/system-shutdown.svg" }
                }
 
 mymainmenu = awful.menu({ items = { 
@@ -102,6 +102,7 @@ mymainmenu = awful.menu({ items = {
                                     { "Mendeley Desktop", "mendeleydesktop", "/usr/share/icons/Papirus-Dark/64x64/apps/mendeley-desktop.svg"},
                                     { "SciLab", "scilab", "/usr/share/icons/Papirus-Dark/64x64/apps/scilab.svg"},
                                     { "Xcos", "xcos", "/usr/share/icons/Papirus-Dark/64x64/apps/xcos.svg"},
+                                    { "Planner", "flatpak run com.github.alainm23.planner", "/usr/share/icons/Papirus-Dark/64x64/apps/planner.svg"},
                                     { "KeePass", "keepassxc", "/usr/share/icons/Papirus-Dark/64x64/apps/keepassxc.svg"},
                                     { "Steam", "steam", "/usr/share/icons/Papirus-Dark/64x64/apps/steam.svg"},
                                     { "Audacious", "audacious", "/usr/share/icons/Papirus-Dark/64x64/apps/audacious.svg"},
@@ -213,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-	          -- battery_widget(),
+	          battery_widget(),
             -- Linha abaixo modificada para adicionar margem na systray para evitar ícones muito grandes
             wibox.layout.margin(wibox.widget.systray(), 3, 3, 3, 3),
             mytextclock,
@@ -353,7 +354,7 @@ globalkeys = gears.table.join(
     awful.spawn("qutebrowser") end,
               {description = "run qutebrowser", group = "launcher"}),
     awful.key({ altkey },            "l",     function ()
-    awful.spawn.with_shell("sleep 1 && xset s activate && slock") end,
+    awful.spawn("light-locker-command -l") end,
               {description = "lock the screen", group = "energy"}),
     awful.key({ altkey },            "s",     function ()
     awful.spawn("steam") end,
@@ -403,6 +404,9 @@ globalkeys = gears.table.join(
     awful.key({ altkey },       "r",     function ()
     awful.spawn("calibre") end,
               {description = "run calibre", group = "launcher"}),
+    awful.key({  }, "XF86AudioMute",     function ()
+    awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ toggle") end,
+              {description = "increase volume", group = "media"}),
     awful.key({  }, "XF86AudioRaiseVolume",     function ()
     awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ +5%") end,
               {description = "increase volume", group = "media"}),
@@ -416,7 +420,7 @@ globalkeys = gears.table.join(
     awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ +5%") end,
               {description = "increase volume", group = "media"}),
     awful.key({ modkey }, "End",     function ()
-    awful.spawn.with_shell("poweroff") end,
+    awful.spawn.with_shell("shutdown 0") end,
               {description = "shutdown", group = "energy"}),
     awful.key({ modkey }, "Insert",     function ()
     awesome.spawn("reboot") end,
@@ -599,21 +603,19 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
-          "xtightvncviewer",
-          "Alacritty", "mpv", "Xfce4-terminal", "Galculator", "Pavucontrol", "Lxpolkit"}, -- Minhas adições
+          "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
         -- and the name shown there might not match defined rules here.
         name = {
           "Event Tester",  -- xev.
-          "Friends List",  -- Para Steam
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true, placement = awful.placement.centered }},
+      }, properties = { floating = true }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
@@ -625,10 +627,14 @@ awful.rules.rules = {
       properties = { screen = 1, tag = " 3 ", switchtotag = true } },
     { rule = { class = "Audacious" },
       properties = { screen = 1, tag = " 4 ", switchtotag = true } },
+    { rule = { name = "Todoist" },
+      properties = { screen = 1, tag = " 5 ", switchtotag = true } },
     { rule = { class = "Steam" },
       properties = { screen = 1, tag = " 7 ", switchtotag = true } },
     { rule = { class = "calibre" },
       properties = { screen = 1, tag = " 6 ", switchtotag = true } },
+    { rule_any = { class = { "Alacritty", "mpv", "Xfce4-terminal", "Galculator", "Pavucontrol" }, name = { "Friends List" } },
+      properties = { floating = true, placement = awful.placement.centered } }
 }
 -- }}}
 
@@ -697,7 +703,19 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Auto Start Apps
--- awful.spawn.with_shell("app command")
+awful.spawn.with_shell("lxpolkit")
+awful.spawn.with_shell("numlockx")
+awful.spawn.with_shell("/usr/lib/geoclue-2.0/demos/agent")
+awful.spawn.with_shell("redshift")
+awful.spawn.with_shell("picom")
+awful.spawn.with_shell("setxkbmap br")
+awful.spawn.with_shell("light-locker")
+awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/")
+awful.spawn.with_shell("/home/rafael/Applications/Todoist-1.0.1.AppImage")
+awful.spawn.with_shell("xset s off -dpms")
+awful.spawn.with_shell("volumeicon")
+awful.spawn.with_shell("nm-applet")
+awful.spawn.with_shell("xfce4-power-manager")
 
 -- Run garbage collector regularly to prevent memory leaks
 gears.timer {

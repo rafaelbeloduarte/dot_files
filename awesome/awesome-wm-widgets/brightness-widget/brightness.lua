@@ -45,19 +45,14 @@ local function worker(user_args)
     local tooltip = args.tooltip or false
     if program == 'light' then
         get_brightness_cmd = 'light -G'
-        set_brightness_cmd = 'light -S %d' -- <level>
+        set_brightness_cmd = 'light -S ' -- <level>
         inc_brightness_cmd = 'light -A ' .. step
         dec_brightness_cmd = 'light -U ' .. step
     elseif program == 'xbacklight' then
         get_brightness_cmd = 'xbacklight -get'
-        set_brightness_cmd = 'xbacklight -set %d' -- <level>
+        set_brightness_cmd = 'xbacklight -set ' -- <level>
         inc_brightness_cmd = 'xbacklight -inc ' .. step
         dec_brightness_cmd = 'xbacklight -dec ' .. step
-    elseif program == 'brightnessctl' then
-        get_brightness_cmd = 'bash -c "brightnessctl -m | cut -d, -f4 | tr -d %"'
-        set_brightness_cmd = 'brightnessctl set %d%%' -- <level>
-        inc_brightness_cmd = 'brightnessctl set +' .. step .. '%'
-        dec_brightness_cmd = 'brightnessctl set ' .. step .. '-%'
     else
         show_warning(program .. " command is not supported by the widget")
         return
@@ -121,7 +116,7 @@ local function worker(user_args)
 
     function brightness_widget:set(value)
         current_level = value
-        spawn.easy_async(string.format(set_brightness_cmd, value), function()
+        spawn.easy_async(set_brightness_cmd .. value, function()
             spawn.easy_async(get_brightness_cmd, function(out)
                 update_widget(brightness_widget.widget, out)
             end)
