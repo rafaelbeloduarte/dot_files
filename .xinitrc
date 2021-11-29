@@ -1,9 +1,10 @@
 # xrandr --newmode "1920x1000_60.00"  159.25  1920 2040 2240 2560  1000 1003 1013 1038 -hsync +vsync
 # xrandr --addmode Virtual1 1920x1000_60.00
 # xrandr -s 1920x1080
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
+# Para resolver problema com carregamento lento de programas
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 numlockx &
-# xset s off -dpms &
+xset s off -dpms &
 setxkbmap -layout br
 nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/ &
 picom &
@@ -12,7 +13,7 @@ redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 slstatus &
-xfce4-power-manager &
+xbindkeys &
 # volumeicon &
 
 exec dwm
