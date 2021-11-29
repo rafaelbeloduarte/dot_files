@@ -4,7 +4,7 @@
 # Para resolver problema com carregamento lento de programas
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 numlockx &
-xset s off -dpms &
+# xset s off -dpms &
 setxkbmap -layout br
 nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/ &
 picom &
@@ -12,6 +12,7 @@ picom &
 redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
+xfce4-power-manager &
 slstatus &
 xbindkeys &
 # volumeicon &
