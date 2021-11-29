@@ -13,6 +13,7 @@ redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 slstatus &
+xbindkeys &
 # volumeicon &
 
 exec dwm
