@@ -12,6 +12,7 @@ picom &
 redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
+xfce4-clipman &
 slstatus &
 xbindkeys &
 # volumeicon &
