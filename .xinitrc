@@ -1,5 +1,6 @@
-# xrandr --newmode "1920x1000_60.00"  159.25  1920 2040 2240 2560  1000 1003 1013 1038 -hsync +vsync
-# xrandr --addmode Virtual1 1920x1000_60.00
+# Use "cvt 1920 1080 60" to calculate VESA CVT mode lines
+# xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+# xrandr --addmode Virtual1 1920x1080_60.00
 # xrandr -s 1920x1080
 # Para resolver problema com carregamento lento de programas
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
