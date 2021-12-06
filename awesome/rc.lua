@@ -337,7 +337,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey}, "e",     function ()
     awful.layout.set(awful.layout.suit.tile)  end, 
               {description = "switch to tile layout", group = "layout"}),
-    awful.key({ modkey}, "v",     function ()
+    awful.key({ modkey}, "g",     function ()
     awful.layout.set(awful.layout.suit.fair)  end, 
               {description = "switch to fair layout", group = "layout"}),
     awful.key({ modkey}, "w",     function ()
@@ -415,6 +415,18 @@ globalkeys = gears.table.join(
     awful.key({  }, "F11",     function ()
     awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ +5%") end,
               {description = "increase volume", group = "media"}),
+    awful.key({ altkey }, "1",     function ()
+    awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 15%") end,
+              {description = "volume 15%", group = "media"}),
+    awful.key({ altkey }, "2",     function ()
+    awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 40%") end,
+              {description = "volume 40%", group = "media"}),
+    awful.key({ altkey }, "3",     function ()
+    awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 60%") end,
+              {description = "volume 60%", group = "media"}),
+    awful.key({ altkey }, "4",     function ()
+    awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 100%") end,
+              {description = "volume 100%", group = "media"}),
     awful.key({ modkey }, "End",     function ()
     awful.spawn.with_shell("poweroff") end,
               {description = "shutdown", group = "energy"}),
