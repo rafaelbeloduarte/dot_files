@@ -12,10 +12,10 @@ picom &
 /usr/lib/geoclue-2.0/demos/agent &
 redshift &
 lxpolkit &
-# /usr/lib/xfce4/notifyd/xfce4-notifyd &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
 xfce4-clipman &
-# slstatus &
-xbindkeys &
-volumeicon &
+slstatus &
+# xbindkeys &
+# volumeicon &
 
-exec awesome
+exec dwm
