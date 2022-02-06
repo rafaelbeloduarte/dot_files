@@ -3,6 +3,7 @@
 # xrandr --addmode Virtual1 1920x1080_60.00
 # xrandr -s 1920x1080
 # Para resolver problema com carregamento lento de programas
+xrdb ~/.Xresources
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 numlockx &
 xset s off -dpms &
@@ -13,9 +14,7 @@ picom &
 redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
-xfce4-clipman &
 slstatus &
-# xbindkeys &
-# volumeicon &
+xfce4-clipman &
 
 exec dwm
