@@ -4,7 +4,6 @@
 # xrandr -s 1920x1080
 # Para resolver problema com carregamento lento de programas
 xrdb ~/.Xresources
-xfce4-clipman &
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 numlockx &
 xset s off -dpms &
@@ -16,6 +15,7 @@ redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 slstatus &
+xfce4-clipman &
 
 exec dwm
 
