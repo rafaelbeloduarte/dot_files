@@ -3,6 +3,9 @@
 # xrandr --addmode Virtual1 1920x1080_60.00
 # xrandr -s 1920x1080
 # Para resolver problema com carregamento lento de programas
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 xrdb ~/.Xresources
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 numlockx &
@@ -16,6 +19,8 @@ lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 slstatus &
 xfce4-clipman &
+fcitx &
+xclip &
 
 exec dwm
 
