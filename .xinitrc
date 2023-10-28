@@ -19,8 +19,8 @@ lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 slstatus &
 xfce4-clipman &
-fcitx &
-xclip &
+# fcitx &
+# xclip &
 
 exec dwm
 
