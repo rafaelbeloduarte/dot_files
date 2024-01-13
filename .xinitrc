@@ -11,14 +11,13 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 numlockx &
 xset s off -dpms &
 setxkbmap -layout br
-nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/ &
+nitrogen --set-zoom-fill --random ~/.local/share/backgrounds/purple &
 picom &
 /usr/lib/geoclue-2.0/demos/agent &
 redshift &
 lxpolkit &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 slstatus &
-xfce4-clipman &
 # fcitx &
 # xclip &
 
