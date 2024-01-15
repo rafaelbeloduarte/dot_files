@@ -5,8 +5,8 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "hyprland/mode", "hyprland/scratchpad", "custom/media"],
-    "modules-center": ["hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/mode", "hyprland/scratchpad", "custom/media", "hyprland/window"],
+    "modules-center": [],
     "modules-right": ["pulseaudio", "cpu", "memory", "temperature", "custom/gpu-temp", "clock", "tray"],
     // Modules configuration
     "hyprland/workspaces": {
@@ -98,7 +98,7 @@
         "critical-threshold": 75,
         "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
