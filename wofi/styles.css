@@ -1,8 +1,8 @@
 window {
   font-family: "Ubuntu Regular", "Font Awesome";
   margin: 0px;
-  border: 1px solid rgba(0, 0, 0, 0.9);
-  background-color: rgba(29, 31, 33, 0.95);
+  border: 2px solid rgba(100, 114, 125, 0.5);
+  background-color: rgba(43, 48, 59, 0.95);
   border-radius: 10px;
 }
 
@@ -10,7 +10,7 @@ window {
   margin: 5px;
   border: none;
   color: #f8f8f2;
-  background-color: rgba(55, 59, 65, 0.95);
+  background-color: rgba(100, 114, 125, 0.5);
 }
 
 #inner-box {
@@ -33,11 +33,12 @@ window {
 #text {
   margin: 5px;
   border: none;
-  color: #c5c8c6;
+  color: #ffffff;
 }
 
 #entry {
   border: none;
+  color: #ffffff;
 }
 
 #entry:focus {
@@ -45,7 +46,25 @@ window {
 }
 
 #entry:selected {
-  background-color: rgba(55, 59, 65, 0.95);
+  background-color: rgba(64, 132, 214, 0.5);
   border-radius: 5px;
   border: none;
+}
+
+expander > list > #entry {
+  background-color: rgba(43, 48, 59, 0.95);
+  color: #ffffff;
+  border-radius: 0px;
+
+}
+
+expander > list > #entry:focus {
+  border: none;
+}
+
+expander > list > #entry:selected {
+  background-color: rgba(53, 89, 136, 1);
+  color: #ffffff;
+  border-radius: 0px;
+
 }
